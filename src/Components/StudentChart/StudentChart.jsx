@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Form, FormControl, Button, Card } from "react-bootstrap";
+import { Navigate } from "react-router-dom";
 import styled from "styled-components";
+import { loadData } from "../../Utils/localStorage";
+
+import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
 
 const StyledTable = styled.table`
   // background: white;
@@ -11,20 +15,20 @@ const StyledTable = styled.table`
 `;
 
 const CardContainer = styled.div`
-  display: none;
-  @media screen and (max-width: 992px) {
-    /* display: grid; */
-    /* grid-auto-rows: 1fr 1fr; */
-    // border: 2px solid green;
-    /* margin-left: 5%; */
-    /* margin-top: 0%; */
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    align-content: space-around;
-  }
+  // display: none;
+  // @media screen and (max-width: 992px) {
+  /* display: grid; */
+  /* grid-auto-rows: 1fr 1fr; */
+  // border: 2px solid green;
+  /* margin-left: 5%; */
+  /* margin-top: 0%; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
+  // }
 `;
 
 export const StudentChart = () => {
@@ -76,7 +80,27 @@ export const StudentChart = () => {
   function onChange(event) {
     setSearch(event.target.value);
   }
+  if (loadData("isLogin") === false || loadData("isLogin") === null) {
+    return <Navigate to="/login" />;
+  }
   // console.log("52", search);
+  const data01 = [
+    { name: "Group A", value: 400 },
+    { name: "Group B", value: 300 },
+    { name: "Group C", value: 300 },
+    { name: "Group D", value: 200 },
+    { name: "Group E", value: 278 },
+    { name: "Group F", value: 189 },
+  ];
+
+  const data02 = [
+    { name: "Group A", value: 2400 },
+    { name: "Group B", value: 4567 },
+    { name: "Group C", value: 1398 },
+    { name: "Group D", value: 9800 },
+    { name: "Group E", value: 3908 },
+    { name: "Group F", value: 4800 },
+  ];
 
   return (
     <div
@@ -121,132 +145,47 @@ export const StudentChart = () => {
             }}
           >
             <h4 style={{ marginLeft: "2%", color: "green" }}>{studentCount}</h4>
-            <span style={{ marginLeft: "2%" }}> Filter By:- </span>
-            <Button
-              style={{ marginLeft: "2%" }}
-              variant="outline-success"
-              onClick={() => handlefilter("term")}
-            >
-              Term
-            </Button>
-            <Button
-              style={{ marginLeft: "2%" }}
-              variant="outline-success"
-              onClick={() => handlefilter("year")}
-            >
-              Year
-            </Button>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              // flexDirection: "row",
-              width: "50%",
-              background: "black",
-              // marginLeft: "auto",
-              // marginRight: "auto",
-              color: "white",
-              justifyContent: "flex-end",
-              alignItems: "center",
-            }}
-          >
-            <Form className="d-flex" style={{ marginRight: "4%" }}>
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-                // id="inputText"
-                onChange={onChange}
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
           </div>
         </div>
       </div>
       <div>
-        <StyledTable className="table">
-          <thead style={{ position: "sticky", top: "0%" }}>
-            <tr>
-              <th style={{ background: "black" }}>S.No</th>
-              <th style={{ background: "black" }}>Name</th>
-              <th style={{ background: "black" }}>Roll Number</th>
-              <th style={{ background: "black" }}>Term</th>
-              <th style={{ background: "black" }}>Year</th>
-              <th style={{ background: "black" }}>Phone</th>
-            </tr>
-          </thead>
-          <tbody style={{}}>
-            {data
-              .filter((d) => {
-                if (search === "") {
-                  return d;
-                } else if (
-                  d.name.toLowerCase().includes(search.toLowerCase()) ||
-                  d.name.toLowerCase().includes(search.toLowerCase()) ||
-                  d.phone.includes(search)
-                ) {
-                  return d;
-                }
-              })
-              .map((d) => {
-                return (
-                  <tr key={d._id}>
-                    <td>{d.roll_number + 1}</td>
-                    <td>{d.name}</td>
-                    <td>1428497{d.roll_number}</td>
-                    <td>{d.term}</td>
-                    <td>{d.year} Year</td>
-                    <td>{d.phone}</td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </StyledTable>
         <CardContainer>
-          {data
-            .filter((d) => {
-              if (search === "") {
-                return d;
-              } else if (
-                d.name.toLowerCase().includes(search.toLowerCase()) ||
-                d.name.toLowerCase().includes(search.toLowerCase()) ||
-                d.phone.includes(search)
-              ) {
-                return d;
-              }
-            })
-            .map((d) => {
-              return (
-                <Card
-                  border="success"
-                  style={{
-                    width: "20rem",
-                    marginTop: "5%",
-                    marginLeft: "2%",
-                    background: "#f8f9fa",
-                    // boxShadow: "10px 10px 5px 12px green",
-                    boxShadow: "4px 11px 30px 7px green",
-                    // border:"10px solid green",
-                    // backgroundImage: "linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114))",
-                    // backgroundImage: "linear-gradient(25deg,#d64c7f,#ee4758 50%)",
-                    // backgroundImage: "linear-gradient(to right, #fc5c7d, #6a82fb)",
-                    // backgroundImage: "linear-gradient( 95.2deg, rgba(173,252,234,1) 26.8%, rgba(192,229,246,1) 64% )",
-                  }}
-                >
-                  <Card.Header>Id :- {d._id}</Card.Header>
-                  <Card.Body>
-                    <Card.Text>S.No :- {d.roll_number + 1}</Card.Text>
-                    <Card.Title>Name :- {d.name} </Card.Title>
-                    <Card.Text>Roll No. :- 1428497{d.roll_number}</Card.Text>
-                    <Card.Text>Term :-{d.term} Term</Card.Text>
-                    <Card.Text>Year :- {d.year} Year</Card.Text>
-                    <Card.Text>Phone Number :- {d.phone}</Card.Text>
-                  </Card.Body>
-                </Card>
-              );
-            })}
+          {data.map((d) => {
+            return (
+              <div
+                border="success"
+                style={{
+                  width: "20rem",
+                  marginTop: "5%",
+                  marginLeft: "2%",
+                  background: "#f8f9fa",
+                  boxShadow: "4px 11px 30px 7px green",
+                }}
+              >
+                <br />
+                <h6>Id :- {d._id}</h6>
+                <br />
+                <h4>Name :- {d.name}</h4>
+                <div>
+                  <PieChart width={300} height={400}>
+                    <Pie
+                      dataKey="value"
+                      isAnimationActive={false}
+                      data={data01}
+                      cx={150}
+                      cy={200}
+                      outerRadius={80}
+                      fill="#8884d8"
+                      label
+                    />
+                  </PieChart>
+                </div>
+              </div>
+            );
+          })}
         </CardContainer>
+
+        {/* <CardContainer></CardContainer> */}
       </div>
     </div>
   );

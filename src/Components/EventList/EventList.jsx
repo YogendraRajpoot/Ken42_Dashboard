@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Modal } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import styled from "styled-components";
 import { registerBox } from "../../Redux/Student/action";
+import { loadData } from "../../Utils/localStorage";
 import { Registeration } from "../Registeration/Registeration";
 
 const StyledTable = styled.table`
@@ -35,7 +36,6 @@ export const EventList = () => {
   const dispatch = useDispatch();
   const registerbox = useSelector((state) => state.student.registerbox);
   const [data, setData] = useState([]);
-  const [modalShow, setModalShow] = useState(false);
   const [studentCount, setStudentcount] = useState("");
 
   useEffect(() => {
@@ -76,6 +76,10 @@ export const EventList = () => {
 
   console.log("186", registerbox);
   console.log("187", data);
+
+  if (loadData("isLogin") === false || loadData("isLogin") === null) {
+    return <Navigate to="/login" />;
+  }
   return (
     <div
       style={{
@@ -111,10 +115,7 @@ export const EventList = () => {
               flexDirection: "row",
               width: "50%",
               background: "black",
-              // marginLeft: "auto",
-              // marginRight: "auto",
               color: "white",
-              // border: "2px solid white",
               alignItems: "center",
             }}
           >
@@ -142,31 +143,6 @@ export const EventList = () => {
               Complete Events
             </Button>
           </div>
-          {/* <div
-            style={{
-              display: "flex",
-              // flexDirection: "row",
-              width: "50%",
-              background: "black",
-              // marginLeft: "auto",
-              // marginRight: "auto",
-              color: "white",
-              justifyContent: "flex-end",
-              alignItems: "center",
-            }}
-          >
-            <Form className="d-flex" style={{ marginRight: "4%" }}>
-              <FormControl
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-                // id="inputText"
-                onChange={onChange}
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form>
-          </div> */}
         </div>
       </div>
       <div>{registerbox && <Registeration />}</div>
@@ -190,14 +166,6 @@ export const EventList = () => {
                   <td>{d.id}</td>
                   <td>Event{d.name}</td>
                   <td>{d.start_date}</td>
-                  {/* {(function A() {
-                    let date = d.end_date.split(".").at(0);
-                    let month = d.end_date.split(".").at(1);
-                    let year = d.end_date.split(".").at(2);
-                    // console.log(+date,+month,+year);
-                    if (todayYear < year) {
-                    }
-                  })()} */}
                   <td>{d.end_date}</td>
                   <td
                     style={{
@@ -224,11 +192,6 @@ export const EventList = () => {
                       >
                         Registration
                       </Button>
-
-                      {/* <MyVerticallyCenteredModal
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
-                      /> */}
                     </>
                   </td>
                 </tr>

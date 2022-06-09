@@ -8,10 +8,19 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { logOut } from "../../Redux/auth/action";
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const expand = "lg";
+  function onClickLogout() {
+    console.log("19");
+    dispatch(logOut());
+    navigate("login")
+  }
   return (
     <>
       {/* {["lg"].map((expand) => ( */}
@@ -47,6 +56,7 @@ export const Dashboard = () => {
                 <Nav.Link as={Link} to="studentchart">
                   Student Chart
                 </Nav.Link>
+                <Nav.Link onClick={onClickLogout}>Logout</Nav.Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

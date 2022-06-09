@@ -1,11 +1,11 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
-// import { authReducer } from "./auth/reducer";
-import thunk from 'redux-thunk'
+import thunk from "redux-thunk";
+import { authReducer } from "./auth/reducer";
 import { studentReducer } from "./Student/reducer";
 
 
 const rootReducer = combineReducers({
-//   auth: authReducer,
+  auth: authReducer,
   student: studentReducer
 })
 const Middleware = (store) => (next) => (action) => {

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Form, FormControl, Button, Card } from "react-bootstrap";
+import { Navigate } from "react-router-dom";
 import styled from "styled-components";
+import { loadData } from "../../Utils/localStorage";
 
 const StyledTable = styled.table`
   // background: white;
@@ -77,6 +79,10 @@ export const StudentList = () => {
     setSearch(event.target.value);
   }
   // console.log("52", search);
+
+  if (loadData("isLogin") === false || loadData("isLogin") === null) {
+    return <Navigate to="/login" />;
+  }
 
   return (
     <div
