@@ -47,13 +47,7 @@ export const EventList = () => {
     fetch("./event.json")
       .then((res) => res.json())
       .then((res) => {
-        setData(
-          res.event.filter((d) => {
-            if (d.status === "upcoming") {
-              return d;
-            }
-          })
-        );
+        setData(res.event.filter((d) => d.status === "upcoming"));
         setStudentcount(res.event.length);
       })
       .catch((err) => console.log(err));
@@ -62,15 +56,7 @@ export const EventList = () => {
     console.log("51");
     fetch("./event.json")
       .then((res) => res.json())
-      .then((res) =>
-        setData(
-          res.event.filter((d) => {
-            if (d.status === param) {
-              return d;
-            }
-          })
-        )
-      )
+      .then((res) => setData(res.event.filter((d) => d.status === param)))
       .catch((err) => console.log(err));
   }
 
