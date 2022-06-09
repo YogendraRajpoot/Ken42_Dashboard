@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 import { loadData } from "../../Utils/localStorage";
 
-import { PieChart, Pie } from "recharts";
+// import { PieChart, Pie } from "recharts";
 
 const CardContainer = styled.div`
   // display: none;
@@ -119,7 +119,7 @@ export const StudentChart = () => {
                 <br />
                 <h4>Name :- {d.name}</h4>
                 <div>
-                  <PieChart width={300} height={400}>
+                  {/* <PieChart width={300} height={400}>
                     <Pie
                       dataKey="value"
                       isAnimationActive={false}
@@ -130,7 +130,7 @@ export const StudentChart = () => {
                       fill="#8884d8"
                       label
                     />
-                  </PieChart>
+                  </PieChart> */}
                 </div>
               </div>
             );
