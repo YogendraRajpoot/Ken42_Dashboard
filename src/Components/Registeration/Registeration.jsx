@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { GrClose } from "react-icons/gr";
-import { registerBox } from "../../Redux/Student/action";
+import { registerBox } from "../../Redux/Student/actionStudent";
 
 const PopUpModal = styled.div`
   // border: 2px solid black;

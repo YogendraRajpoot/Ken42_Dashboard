@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { loginUser } from "../../Redux/auth/action";
+import { loginUser } from "../../Redux/auth/actionAuth";
 import { loadData } from "../../Utils/localStorage";
 
 
@@ -58,7 +58,7 @@ export const Login = () => {
       console.log("59",loadData("isLogin"));
       navigate(`/`);
     }
-  }, []);
+  }, [navigate]);
   // ****************************************************** //
 
   const handleSubmit = (e) => {

@@ -1,4 +1,4 @@
-import { is_Login, Login, Token, User_Name } from "./action";
+import { is_Login, Login, Token, User_Name } from "./actionAuth";
 
 const initState = {
   isLogin: false,

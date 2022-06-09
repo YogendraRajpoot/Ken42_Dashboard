@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, Container, Offcanvas } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { logOut } from "../../Redux/auth/action";
+import { logOut } from "../../Redux/auth/actionAuth";
 
 export const Dashboard = () => {
   const navigate = useNavigate();

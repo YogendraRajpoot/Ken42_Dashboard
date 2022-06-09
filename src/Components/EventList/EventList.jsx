@@ -3,7 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
-import { registerBox } from "../../Redux/Student/action";
+import { registerBox } from "../../Redux/Student/actionStudent";
 import { loadData } from "../../Utils/localStorage";
 import { Registeration } from "../Registeration/Registeration";
 

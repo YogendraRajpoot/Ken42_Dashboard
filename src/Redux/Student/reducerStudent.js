@@ -1,4 +1,4 @@
-import { REGISTER_BOX } from "./action";
+import { REGISTER_BOX } from "./actionStudent";
 
 const initState = {
   registerbox: false,
