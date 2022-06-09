@@ -184,17 +184,13 @@ export const StudentList = () => {
           </thead>
           <tbody style={{}}>
             {data
-              .filter((d) => {
-                if (search === "") {
-                  return d;
-                } else if (
-                  d.name.toLowerCase().includes(search.toLowerCase()) ||
-                  d.name.toLowerCase().includes(search.toLowerCase()) ||
-                  d.phone.includes(search)
-                ) {
-                  return d;
-                }
-              })
+              .filter((d) =>
+                search === ""
+                  ? d
+                  : d.name.toLowerCase().includes(search.toLowerCase()) ||
+                    d.name.toLowerCase().includes(search.toLowerCase()) ||
+                    d.phone.includes(search)
+              )
               .map((d) => {
                 return (
                   <tr key={d._id}>
@@ -211,17 +207,13 @@ export const StudentList = () => {
         </StyledTable>
         <CardContainer>
           {data
-            .filter((d) => {
-              if (search === "") {
-                return d;
-              } else if (
-                d.name.toLowerCase().includes(search.toLowerCase()) ||
-                d.name.toLowerCase().includes(search.toLowerCase()) ||
-                d.phone.includes(search)
-              ) {
-                return d;
-              }
-            })
+            .filter((d) =>
+              search === ""
+                ? d
+                : d.name.toLowerCase().includes(search.toLowerCase()) ||
+                  d.name.toLowerCase().includes(search.toLowerCase()) ||
+                  d.phone.includes(search)
+            )
             .map((d) => {
               return (
                 <Card
