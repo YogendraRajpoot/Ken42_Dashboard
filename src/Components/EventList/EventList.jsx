@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Modal } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 import { registerBox } from "../../Redux/Student/action";
 import { loadData } from "../../Utils/localStorage";

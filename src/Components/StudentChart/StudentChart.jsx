@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Form, FormControl, Button, Card } from "react-bootstrap";
 import { Navigate } from "react-router-dom";
 import styled from "styled-components";
 import { loadData } from "../../Utils/localStorage";
 
-import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
-
-const StyledTable = styled.table`
-  // background: white;
-  color: white;
-  @media screen and (max-width: 992px) {
-    display: none;
-  }
-`;
+import { PieChart, Pie } from "recharts";
 
 const CardContainer = styled.div`
   // display: none;
@@ -33,7 +24,6 @@ const CardContainer = styled.div`
 
 export const StudentChart = () => {
   const [data, setData] = useState([]);
-  const [search, setSearch] = useState("");
   const [studentCount, setStudentcount] = useState("");
 
   useEffect(() => {
@@ -50,36 +40,7 @@ export const StudentChart = () => {
       })
       .catch((err) => console.log(err));
   };
-  function handlefilter(param) {
-    if (param === "term") {
-      fetch("./db.json")
-        .then((res) => res.json())
-        .then((res) =>
-          setData(
-            res.studentlist.sort((a, b) => {
-              return a.term - b.term;
-            })
-          )
-        )
-        .catch((err) => console.log(err));
-    }
-    if (param === "year") {
-      fetch("./db.json")
-        .then((res) => res.json())
-        .then((res) =>
-          setData(
-            res.studentlist.sort((a, b) => {
-              return a.year - b.year;
-            })
-          )
-        )
-        .catch((err) => console.log(err));
-    }
-  }
 
-  function onChange(event) {
-    setSearch(event.target.value);
-  }
   if (loadData("isLogin") === false || loadData("isLogin") === null) {
     return <Navigate to="/login" />;
   }
@@ -91,15 +52,6 @@ export const StudentChart = () => {
     { name: "Group D", value: 200 },
     { name: "Group E", value: 278 },
     { name: "Group F", value: 189 },
-  ];
-
-  const data02 = [
-    { name: "Group A", value: 2400 },
-    { name: "Group B", value: 4567 },
-    { name: "Group C", value: 1398 },
-    { name: "Group D", value: 9800 },
-    { name: "Group E", value: 3908 },
-    { name: "Group F", value: 4800 },
   ];
 
   return (
@@ -184,8 +136,6 @@ export const StudentChart = () => {
             );
           })}
         </CardContainer>
-
-        {/* <CardContainer></CardContainer> */}
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { GrClose } from "react-icons/gr";
 import { registerBox } from "../../Redux/Student/action";
@@ -140,17 +139,9 @@ const StyledForm = styled.form`
   margin-right: auto;
   text-align: center;
 `;
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: white;
-  font-size: large;
-  font-weight: 600;
-  &:hover {
-    color: black;
-  }
-`;
 
 export const Registeration = () => {
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -179,10 +170,7 @@ export const Registeration = () => {
   };
 
   //   const d = useSelector ((state) => state.card);
-  const dispatch = useDispatch();
-  function onClick() {
-    // dispatch(cardClicked(false));
-  }
+
   function onClickClose() {
     dispatch(registerBox(false));
   }

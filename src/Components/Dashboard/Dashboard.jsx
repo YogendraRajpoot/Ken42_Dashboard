@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  Container,
-  Offcanvas,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Nav, Container, Offcanvas } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logOut } from "../../Redux/auth/action";
@@ -19,7 +11,7 @@ export const Dashboard = () => {
   function onClickLogout() {
     console.log("19");
     dispatch(logOut());
-    navigate("login")
+    navigate("login");
   }
   return (
     <>
