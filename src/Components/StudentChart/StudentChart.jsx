@@ -45,14 +45,14 @@ export const StudentChart = () => {
     return <Navigate to="/login" />;
   }
   // console.log("52", search);
-  const data01 = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
-    { name: "Group E", value: 278 },
-    { name: "Group F", value: 189 },
-  ];
+  // const data01 = [
+  //   { name: "Group A", value: 400 },
+  //   { name: "Group B", value: 300 },
+  //   { name: "Group C", value: 300 },
+  //   { name: "Group D", value: 200 },
+  //   { name: "Group E", value: 278 },
+  //   { name: "Group F", value: 189 },
+  // ];
 
   return (
     <div
