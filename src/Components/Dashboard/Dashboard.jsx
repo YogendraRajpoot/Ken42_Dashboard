@@ -39,7 +39,7 @@ export const Dashboard = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link as={Link} to="studentlist">
+                <Nav.Link as={Link} to="/">
                   Student List
                 </Nav.Link>
                 <Nav.Link as={Link} to="eventlist">
