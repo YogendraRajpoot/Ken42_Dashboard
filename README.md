@@ -38,7 +38,7 @@
 
 ## Demo 🎥
 
-Deployed Link: [Dashboard Link](https://admin-dashboard-yogendra.herokuapp.com/login)
+Deployed Link: [Dashboard Link](https://admin-dashboard-yogendra.herokuapp.com)
 
 ## Author 🤝
 
