@@ -24,7 +24,7 @@
 - Go and check link below
 
 ```bash
-   
+   https://admin-dashboard-yogendra.herokuapp.com/login
 ```
 
 ## Snapshots 📷
@@ -38,7 +38,7 @@
 
 ## Demo 🎥
 
-Deployed Link: [Dashboard Link]()
+Deployed Link: [Dashboard Link](https://admin-dashboard-yogendra.herokuapp.com/login)
 
 ## Author 🤝
 
