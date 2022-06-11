@@ -24,7 +24,7 @@
 - Go and check link below
 
 ```bash
-   https://admin-dashboard-yogendra.herokuapp.com/login
+   https://admin-dashboard-yogendra.herokuapp.com
 ```
 
 ## Snapshots 📷
